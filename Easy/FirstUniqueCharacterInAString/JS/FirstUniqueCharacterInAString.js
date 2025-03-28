@@ -3,17 +3,19 @@
  * @return {number}
  */
 var firstUniqChar = function(s) {
-    var dict = {};
-    for(var index in s){
-        if(!dict[s.charAt(index)]){
-            dict[s.charAt(index)] = 1
+    let dict = new Map();
+    for(let index of s){
+        console.log(index);
+        if(!dict.has(index)){
+            dict.set(index, 1);
         } else {
-            dict[s.charAt(index)] += 1
+            dict.set(index, dict.get(index)+1);
         }
     }
-    for(var index in dict){
-        if(dict[s.charAt(index)] == 1)
-            return index;
+    console.log(dict)
+    for(let i = 0; i < s.length; i++){
+        if(dict.get(s[i]) == 1)
+            return i;
     }
-    return -1
+    return -1;
 };
