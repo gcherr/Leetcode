@@ -3,14 +3,14 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    let dict = {};
+    let dict = new Map();
     let majorityVal = Math.floor(nums.length/2);
     for(let index in nums){
-        if(dict[nums[index]]){
-            dict[nums[index]] += 1;
+        if(dict.has(nums[index])){
+            dict.set(nums[index], dict.get(nums[index]) + 1);
         }
         else
-            dict[nums[index]] = 1;
+            dict.set(nums[index], 1);
     }
-    return Object.keys(dict).find(key => dict[key] > majorityVal);
+    return dict.keys().find(key => dict.get(key) > majorityVal);
 };
