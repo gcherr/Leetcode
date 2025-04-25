@@ -11,6 +11,12 @@ var majorityElement = function(nums) {
         }
         else
             dict.set(nums[index], 1);
+
+        if(dict.get(nums[index]) > majorityVal){
+            return nums[index];
+        }
     }
+    //According to problem solution should be found in the loop
+    //Next line will find it if it is somehow not found after the loop 
     return dict.keys().find(key => dict.get(key) > majorityVal);
 };
